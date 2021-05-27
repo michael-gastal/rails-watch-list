@@ -1,0 +1,23 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y2luZW1hfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80);">
+  <div class="container">
+    <h1>Welcome to your movies application</h1>
+    <p><span id="banner-typed-text"></span></p>
+  </div>
+</div>
+
+<div class="cards">
+  <% @movies.each do |movie| %>
+    <div class="card-trip">
+      <%= image_tag movie.poster_url, alt: "Poster of #{movie.title}" %>
+      <div class="card-trip-infos">
+        <div>
+          <h2><%= movie.title %></h2>
+          <p><%= movie.overview %></p>
+        </div>
+        <h2 class="card-trip-pricing"><%= movie.rating %></h2>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
