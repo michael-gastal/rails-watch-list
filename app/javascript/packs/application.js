@@ -22,7 +22,6 @@ import { loadDynamicBannerTextLists } from '../components/banner';
 import { initSelect2 } from '../components/init_select2';
 
 document.addEventListener('turbolinks:load', () => {
-  loadDynamicBannerTextHome();
-  loadDynamicBannerTextLists();
+  loadDynamicBannerText();
   initSelect2();
 });

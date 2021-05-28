@@ -17,5 +17,5 @@ const loadDynamicBannerTextLists = () => {
   });
 }
 
-export { loadDynamicBannerTextHome };
+export { loadDynamicBannerText };
 export { loadDynamicBannerTextLists };

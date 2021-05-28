@@ -1,23 +1,32 @@
-<% if @list.name.downcase == 'classic' || @list.name.downcase == 'classics' %>
-  <% url = 'https://wallpaperaccess.com/full/1561392.jpg' %>
-<% elsif @list.name.downcase == 'superhero' || @list.name.downcase == 'superheros' %>
-  <% url = 'https://wallpaperaccess.com/full/247074.jpg' %>
-<% elsif @list.name.downcase == 'animation' || @list.name.downcase == 'animations' %>
-  <% url = 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/34c0ce00-4b2b-4113-ae46-282dc56aae1c/ddxnu4i-4c98d715-53f0-42cb-a7d9-c16b96dced37.png/v1/fill/w_996,h_760,q_80,strp/pixar_characters_in_black_and_white_3d_by_dlee1293847_ddxnu4i-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NzYwIiwicGF0aCI6IlwvZlwvMzRjMGNlMDAtNGIyYi00MTEzLWFlNDYtMjgyZGM1NmFhZTFjXC9kZHhudTRpLTRjOThkNzE1LTUzZjAtNDJjYi1hN2Q5LWMxNmI5NmRjZWQzNy5wbmciLCJ3aWR0aCI6Ijw9OTk2In1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.xvOOp0-irpG4Xi_8pYg51VMYJMaAACewm0E9MfZXAAA' %>
-<% elsif @list.name.downcase == 'drama' || @list.name.downcase == 'dramas' %>
-  <% url = 'https://media.cntraveler.com/photos/5ed019fe94e8b5f3037b62bc/master/w_400%2Cc_limit/La-Haine-RYMBA2.jpg' %>
-<% elsif @list.name.downcase == 'comedy' || @list.name.downcase == 'comedies' %>
-  <% url = 'https://lh3.googleusercontent.com/proxy/yYsId_5CCADtbkFAQZYJHqXyncQqnl5nECUcVCvXhkutAbYOqLgHZ3YTbkY4qABnBjIdbVH0JANgbjyN5VGDjY9w-jbGWSTpzfYAr6horKEVA7S9-iOt54tMr-wa9UA6JnI3IQ' %>
-<% elsif @list.name.downcase == 'action' || @list.name.downcase == 'actions' %>
-  <% url = 'https://wallpapercave.com/wp/wp3173712.jpg' %>
-<% end %>
-
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= url %>);">
-  <div class="container">
-    <h1><%= @list.name %></h1>
-    <%= link_to "Add a movie", new_list_bookmark_path(@list), class: "btn btn-ghost" %>
+<% if @list.photo.attached? %>
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= cl_image_path list.photo.key, crop: :fill %>);">
+    <div class="container">
+      <h1><%= @list.name %></h1>
+      <%= link_to "Add a movie", new_list_bookmark_path(@list), class: "btn btn-ghost" %>
+    </div>
   </div>
-</div>
+<% else %>
+  <% if @list.name.downcase == 'classic' || @list.name.downcase == 'classics' %>
+    <% url = 'https://wallpaperaccess.com/full/1561392.jpg' %>
+  <% elsif @list.name.downcase == 'superhero' || @list.name.downcase == 'superheros' %>
+    <% url = 'https://wallpaperaccess.com/full/247074.jpg' %>
+  <% elsif @list.name.downcase == 'animation' || @list.name.downcase == 'animations' %>
+    <% url = 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/34c0ce00-4b2b-4113-ae46-282dc56aae1c/ddxnu4i-4c98d715-53f0-42cb-a7d9-c16b96dced37.png/v1/fill/w_996,h_760,q_80,strp/pixar_characters_in_black_and_white_3d_by_dlee1293847_ddxnu4i-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NzYwIiwicGF0aCI6IlwvZlwvMzRjMGNlMDAtNGIyYi00MTEzLWFlNDYtMjgyZGM1NmFhZTFjXC9kZHhudTRpLTRjOThkNzE1LTUzZjAtNDJjYi1hN2Q5LWMxNmI5NmRjZWQzNy5wbmciLCJ3aWR0aCI6Ijw9OTk2In1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.xvOOp0-irpG4Xi_8pYg51VMYJMaAACewm0E9MfZXAAA' %>
+  <% elsif @list.name.downcase == 'drama' || @list.name.downcase == 'dramas' %>
+    <% url = 'https://media.cntraveler.com/photos/5ed019fe94e8b5f3037b62bc/master/w_400%2Cc_limit/La-Haine-RYMBA2.jpg' %>
+  <% elsif @list.name.downcase == 'comedy' || @list.name.downcase == 'comedies' %>
+    <% url = 'https://lh3.googleusercontent.com/proxy/yYsId_5CCADtbkFAQZYJHqXyncQqnl5nECUcVCvXhkutAbYOqLgHZ3YTbkY4qABnBjIdbVH0JANgbjyN5VGDjY9w-jbGWSTpzfYAr6horKEVA7S9-iOt54tMr-wa9UA6JnI3IQ' %>
+  <% elsif @list.name.downcase == 'action' || @list.name.downcase == 'actions' %>
+    <% url = 'https://wallpapercave.com/wp/wp3173712.jpg' %>
+  <% end %>
+
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= url %>);">
+    <div class="container">
+      <h1><%= @list.name %></h1>
+      <%= link_to "Add a movie", new_list_bookmark_path(@list), class: "btn btn-ghost" %>
+    </div>
+  </div>
+<% end %>
 
 <div class="cards">
   <% @list.movies.each do |movie| %>
@@ -25,14 +34,13 @@
       <%= image_tag movie.poster_url, alt: "Poster of #{movie.title}" %>
       <div class="card-trip-infos">
         <div>
-          <h2><%= movie.title %></h2>
+          <h2><%= movie.title %> <i class="fas fa-star"></i> <%= movie.rating %></h2>
           <p><%= movie.overview %></p>
         </div>
-        <h2 class="card-trip-pricing"><%= movie.rating %></h2>
         <% movie.bookmarks.each do |bookmark| %>
-          <p><%= bookmark.comment %></p>
-          <%= link_to "Delete", bookmark_path(bookmark), method: :delete, data: { confirm: "Are you sure?" } %>
+          <p><i class="fas fa-comment"></i> <%= bookmark.comment %></p>
         <% end %>
+        <%= link_to "Delete", bookmark_path(bookmark), method: :delete, data: { confirm: "Are you sure?" } %>
       </div>
     </div>
   <% end %>
