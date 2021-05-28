@@ -1,9 +1,9 @@
 <div class="form">
-  <h1>Choose a name for your new List</h1>
+  <h1>Create your new List</h1>
 
   <%= simple_form_for @list do |f| %>
     <%= f.input :name %>
-    <%= f.submit %>
+    <%= f.submit "Create", class: "form-button" %>
   <% end %>
 </div>
 
