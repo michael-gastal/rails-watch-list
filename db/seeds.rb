@@ -13,15 +13,20 @@ require 'open-uri'
 require 'json'
 
 puts 'Cleaning database...'
+Bookmark.destroy_all
+List.destroy_all
 Movie.destroy_all
 puts 'Database is cleaned'
-url = "http://tmdb.lewagon.com/movie/top_rated"
-@movies = JSON.parse(open(url).read)['results']
-
-@movies.each do |movie|
-  puts "Creating #{movie['title']}..."
-  Movie.create(title: movie['title'], overview: movie['overview'], poster_url: "https://image.tmdb.org/t/p/w500#{movie['poster_path']}", rating: movie['vote_average'])
-  puts "#{movie['title']} is created !"
+url = 'http://tmdb.lewagon.com/movie/top_rated?page='
+page_number = 0
+400.times do
+  page_number += 1
+  @movies = JSON.parse(open("#{url}#{page_number}").read)['results']
+  @movies.each do |movie|
+    puts "Creating #{movie['title']}..."
+    Movie.create(title: movie['title'], overview: movie['overview'], poster_url: "https://image.tmdb.org/t/p/w500#{movie['poster_path']}", rating: movie['vote_average'])
+    puts "#{movie['title']} is created !"
+  end
 end
 
 puts 'Database is fulled of movies !'
