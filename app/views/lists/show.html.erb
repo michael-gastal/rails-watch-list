@@ -39,10 +39,8 @@
           <h2><%= movie.title %> <i class="fas fa-star"></i> <%= movie.rating %></h2>
           <p><%= movie.overview %></p>
         </div>
-        <% movie.bookmarks.each do |bookmark| %>
-          <p><i class="fas fa-comment"></i> <%= bookmark.comment %></p>
-        <% end %>
-        <%= link_to "Delete", bookmark_path(bookmark), method: :delete, data: { confirm: "Are you sure?" } %>
+          <p><i class="fas fa-comment"></i> <%= movie.bookmark.comment %></p>
+          <%= link_to "Delete", bookmark_path(movie.bookmark), method: :delete, data: { confirm: "Are you sure?" } %>
       </div>
     </div>
   <% end %>
