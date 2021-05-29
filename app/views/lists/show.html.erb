@@ -41,7 +41,7 @@
         </div>
           <p><i class="fas fa-comment"></i> <%= movie.bookmarks.where(list: @list).first.comment %></p>
           <% my_bookmark = movie.bookmarks.where(list: @list).first %>
-          <%= link_to "Delete", my_bookmark, method: :delete, data: { confirm: "Are you sure?" } %>
+          <%= link_to "Delete", bookmark_path(my_bookmark), method: :delete, data: { confirm: "Are you sure?" } %>
       </div>
     </div>
   <% end %>
