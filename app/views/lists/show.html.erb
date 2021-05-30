@@ -20,6 +20,8 @@
     <% url = 'https://wallpapercave.com/wp/wp3173712.jpg' %>
   <% elsif @list.name.downcase == 'horror' || @list.name.downcase == 'horrors' %>
     <% url = 'https://wallpaper.dog/large/5474922.jpg' %>
+  <% else %>
+    <% url = 'https://m.media-amazon.com/images/I/81cy-3iz06L._AC_SL1500_.jpg' %>
   <% end %>
 
   <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= url %>);">
@@ -40,9 +42,9 @@
           <h2><%= movie.title %> <i class="fas fa-star"></i> <%= movie.rating %></h2>
           <p><%= movie.overview %></p>
         </div>
-          <div><i class="fas fa-quote-left"></i> <%= bookmark.comment %></div>
-          <div><%= link_to "Delete", bookmark_path(bookmark), method: :delete, data: { confirm: "Are you sure?" } %></div>
       </div>
+      <div><i class="fas fa-quote-left"></i> <%= bookmark.comment %></div>
+      <div><%= link_to 'Delete', bookmark_path(bookmark), method: :delete, data: { confirm: "Are you sure?" } %></div>
     </div>
   <% end %>
 </div>
